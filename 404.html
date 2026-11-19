@@ -1,27 +1,36 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Page not found | Sharon</title>
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#eef0ec">
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600&display=swap" rel="stylesheet">
-  <script>try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark"){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.dataset.theme=t}catch(e){}</script>
-  <link rel="stylesheet" href="/style.css">
+  <meta name="theme-color" content="#09090b">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <style>
     main { min-height: 100svh; display: grid; place-items: center; padding: 2rem; }
-    .box { max-width: 28rem; }
-    .box h1 { font-size: 2.4rem; margin-bottom: .75rem; }
-    .box p { color: var(--muted); margin: 0 0 1.5rem; }
+    .box { max-width: 30rem; text-align: left; }
+    .box h1 { font-size: 2.2rem; margin-bottom: .85rem; color: #ffffff; }
+    .box p { color: var(--muted); margin: 0 0 1.75rem; font-size: 1.05rem; }
   </style>
 </head>
 <body>
   <main>
     <div class="tile box">
+      <div class="mac-header" aria-hidden="true" style="margin-bottom: 1.25rem; padding-bottom: .75rem;">
+        <div class="mac-dots">
+          <span class="mac-dot"></span>
+          <span class="mac-dot"></span>
+          <span class="mac-dot"></span>
+        </div>
+        <span class="mac-title">404 ~ not found</span>
+      </div>
       <h1>Page not found</h1>
       <p>That page doesn't exist. The portfolio is a single page, so the home page has everything.</p>
-      <a class="btn btn-accent" style="background: var(--mint); color: #0b1a14;" href="/">Back to the home page</a>
+      <a class="btn btn-accent" href="/">Back to the home page</a>
     </div>
   </main>
 </body>
