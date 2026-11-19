@@ -112,3 +112,34 @@ var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matche
     }).catch(function () {});
   });
 })();
+
+// Theme toggle: follows the system until the person picks one, then remembers it.
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme-toggle");
+  var meta = document.getElementById("theme-color");
+  var mq = window.matchMedia("(prefers-color-scheme: dark)");
+
+  function apply(theme) {
+    root.dataset.theme = theme;
+    if (meta) meta.content = theme === "dark" ? "#0d1411" : "#eef0ec";
+    if (btn) {
+      btn.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+      btn.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+    }
+  }
+  apply(root.dataset.theme === "dark" ? "dark" : "light");
+
+  if (btn) btn.addEventListener("click", function () {
+    var next = root.dataset.theme === "dark" ? "light" : "dark";
+    apply(next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var onChange = function (e) {
+    var stored = null;
+    try { stored = localStorage.getItem("theme"); } catch (err) {}
+    if (!stored) apply(e.matches ? "dark" : "light");
+  };
+  if (mq.addEventListener) mq.addEventListener("change", onChange);
+})();
