@@ -3,118 +3,162 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>sharon</title>
-  <meta name="description" content="sharon builds bots, media pipelines and audio servers, and makes Minecraft horror videos on AvarathyGaming.">
-  <meta property="og:title" content="sharon">
-  <meta property="og:description" content="Bots, media pipelines and audio servers. Minecraft horror videos on AvarathyGaming.">
+  <title>Sharon | Backend, bots and media pipelines</title>
+  <meta name="description" content="Sharon builds Discord music bots, audio servers, feed monitors and media pipelines in Python, Java and TypeScript. Also runs the AvarathyGaming YouTube channel.">
+  <meta property="og:title" content="Sharon | Backend, bots and media pipelines">
+  <meta property="og:description" content="Discord music bots, audio servers and automation in Python, Java and TypeScript.">
   <meta property="og:image" content="https://avatars.githubusercontent.com/u/253408985?v=4">
-  <meta name="theme-color" content="#0c0f10">
+  <meta name="theme-color" content="#07070d">
   <link rel="icon" href="https://avatars.githubusercontent.com/u/253408985?s=64&v=4">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Sora:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a class="skip" href="#work">Skip to projects</a>
+  <a class="skip" href="#projects">Skip to projects</a>
 
-  <header class="hero" id="top">
-    <nav class="nav" aria-label="Main">
-      <a href="#work">projects</a>
-      <a href="#channel">channel</a>
-      <a href="#contact">contact</a>
-    </nav>
-
-    <div class="hero-text base">
-      <h1>sharon</h1>
-      <p>i build things that keep running on their own: discord bots, audio servers, feed monitors. on the side, i make horror gaming videos.</p>
-    </div>
-    <div class="hero-text lit" aria-hidden="true">
-      <p class="name">sharon</p>
-      <p>i build things that keep running on their own: discord bots, audio servers, feed monitors. on the side, i make horror gaming videos.</p>
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="brand" href="#top" aria-label="Sharon, home">
+        <img src="https://avatars.githubusercontent.com/u/253408985?s=80&v=4" alt="" width="32" height="32">
+        <span>sharon</span>
+      </a>
+      <nav aria-label="Main">
+        <a href="#projects">Projects</a>
+        <a href="#focus">Focus</a>
+        <a href="#channel">Channel</a>
+        <a href="#about">About</a>
+      </nav>
+      <a class="btn btn-small" href="https://github.com/Sharon-ctl">GitHub</a>
     </div>
   </header>
 
-  <main>
-    <section class="work" id="work" aria-labelledby="work-h">
+  <main id="top">
+    <section class="hero">
       <div class="wrap">
-        <h2 id="work-h">Things i've built</h2>
-        <p class="section-note">Backend, media streaming and automation. Mostly Python, Java and TypeScript.</p>
+        <p class="pill"><span class="dot" aria-hidden="true"></span>Based in India</p>
+        <h1>I build bots, audio servers and automation that <span class="grad">keep running</span> without me.</h1>
+        <p class="lede">Hi, I'm Sharon. I write backend code in Python, Java and TypeScript: Discord music bots, feed monitors and media pipelines. I also make Minecraft horror videos on YouTube.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#projects">See my work</a>
+          <a class="btn btn-ghost" href="https://www.youtube.com/@AvarathyGaming">Watch AvarathyGaming</a>
+        </div>
+      </div>
+      <canvas id="eq" aria-hidden="true"></canvas>
+    </section>
 
-        <ul class="projects">
-          <li>
-            <a href="https://github.com/Sharon-ctl/Melora.py">
-              <span class="p-name">Melora.py</span>
-              <span class="p-desc">A Discord music bot built to run unattended 24/7, with crash recovery, health watchdogs, sliding-window rate limiting and 171 unit tests checked by GitHub Actions.</span>
-              <span class="p-tags">Python, discord.py, lavalink.py</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/Sharon-ctl/Melora-Java">
-              <span class="p-name">Melora-Java</span>
-              <span class="p-desc">The same music bot idea in Java: multi-threaded audio handling across many servers at once.</span>
-              <span class="p-tags">Java, JDA, Lavaplayer</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/Sharon-ctl/Melora.js">
-              <span class="p-name">Melora.js</span>
-              <span class="p-desc">A lightweight, typed audio bot with slash commands and fast playback start.</span>
-              <span class="p-tags">TypeScript, Node.js</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/Sharon-ctl/Online-fix-request-sending-dc-bot">
-              <span class="p-name">Online-Fix Tracker</span>
-              <span class="p-desc">Polls an RSS feed, removes duplicates, translates Russian posts to English and sends them to Discord. Ships as a Docker container.</span>
-              <span class="p-tags">Python, Docker</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/Sharon-ctl/YT-Downloader-">
-              <span class="p-name">YTDL Toolkit</span>
-              <span class="p-desc">A PowerShell wrapper around yt-dlp for choosing the video and audio formats you want.</span>
-              <span class="p-tags">PowerShell, yt-dlp, FFmpeg</span>
-            </a>
-          </li>
-        </ul>
-
-        <p class="more"><a href="https://github.com/Sharon-ctl?tab=repositories">See all repositories on GitHub</a></p>
+    <section class="stats" aria-label="At a glance">
+      <div class="wrap stat-row">
+        <div><strong>8</strong><span>public repositories</span></div>
+        <div><strong>3</strong><span>languages for one bot</span></div>
+        <div><strong>171</strong><span>automated tests in Melora.py</span></div>
+        <div><strong>24/7</strong><span>unattended operation by design</span></div>
       </div>
     </section>
 
-    <section class="channel" id="channel" aria-labelledby="channel-h">
+    <section class="section" id="projects" aria-labelledby="projects-h">
       <div class="wrap">
-        <h2 id="channel-h">AvarathyGaming</h2>
-        <p class="channel-lead">My YouTube channel. Minecraft, new games, old games, weird games, and pushing a game further than i probably should.</p>
-        <p class="channel-body">A lot of it is Malayalam Minecraft horror: playing mid-scary mods and telling the scary story as it happens.</p>
-        <a class="button" href="https://www.youtube.com/@AvarathyGaming">Watch on YouTube</a>
+        <div class="head">
+          <h2 id="projects-h">Selected projects</h2>
+          <p>Audio infrastructure, automation and tools. Everything is open source on GitHub.</p>
+        </div>
+
+        <div class="bento">
+          <article class="card feature">
+            <h3>Melora</h3>
+            <p>A Discord music bot, built three times to compare stacks. Same idea, three implementations, with its own site to help people pick a setup for their server.</p>
+            <div class="versions">
+              <a href="https://github.com/Sharon-ctl/Melora.py"><strong>Python</strong><span>discord.py + lavalink.py</span></a>
+              <a href="https://github.com/Sharon-ctl/Melora-Java"><strong>Java</strong><span>JDA + Lavaplayer</span></a>
+              <a href="https://github.com/Sharon-ctl/Melora.js"><strong>TypeScript</strong><span>Typed, slash commands</span></a>
+            </div>
+            <a class="link" href="https://melora-info.vercel.app/">Visit the Melora site</a>
+          </article>
+
+          <article class="card tall">
+            <h3>Melora.py</h3>
+            <p>The production-grade version. Crash-recovery supervisors and health watchdogs keep it up, a sliding-window rate limiter caps memory use, and 171 unit tests run on every push with GitHub Actions.</p>
+            <ul class="chips"><li>Python 3.11</li><li>discord.py</li><li>Pytest</li><li>GitHub Actions</li></ul>
+            <a class="link" href="https://github.com/Sharon-ctl/Melora.py">View on GitHub</a>
+          </article>
+
+          <article class="card">
+            <h3>Online-Fix Tracker</h3>
+            <p>Polls an RSS feed, removes duplicates, translates Russian posts into English and posts them to Discord. Runs in Docker.</p>
+            <ul class="chips"><li>Python</li><li>Docker</li><li>RSS</li></ul>
+            <a class="link" href="https://github.com/Sharon-ctl/Online-fix-request-sending-dc-bot">View on GitHub</a>
+          </article>
+
+          <article class="card">
+            <h3>YTDL Toolkit</h3>
+            <p>A PowerShell front end for yt-dlp that lets you pick which video and audio formats to download.</p>
+            <ul class="chips"><li>PowerShell</li><li>yt-dlp</li><li>FFmpeg</li></ul>
+            <a class="link" href="https://github.com/Sharon-ctl/YT-Downloader-">View on GitHub</a>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="stack" aria-labelledby="stack-h">
+    <section class="section alt" id="focus" aria-labelledby="focus-h">
       <div class="wrap">
-        <h2 id="stack-h">What i work with</h2>
-        <dl>
-          <div><dt>Languages</dt><dd>Python, Java, TypeScript, JavaScript, PowerShell, SQL, HTML and CSS</dd></div>
-          <div><dt>Frameworks</dt><dd>discord.py, JDA, Lavalink, Lavaplayer, asyncio, pytest, Ruff</dd></div>
-          <div><dt>Tools</dt><dd>Docker, GitHub Actions, Git, FFmpeg, yt-dlp, SQLite</dd></div>
-        </dl>
+        <div class="head">
+          <h2 id="focus-h">What I focus on</h2>
+          <p>Systems that need to stay up and handle a lot of small jobs well.</p>
+        </div>
+        <div class="grid4">
+          <article class="card"><h3>Audio and media streaming</h3><p>High-throughput audio with Lavalink, Lavaplayer and JDA across Python, Java and TypeScript.</p></article>
+          <article class="card"><h3>Asynchronous design</h3><p>Event loops, non-blocking I/O, circuit breakers and bounded token-bucket rate limits.</p></article>
+          <article class="card"><h3>Data ingestion</h3><p>Background monitors, RSS parsers, automatic translation and media transcoding pipelines.</p></article>
+          <article class="card"><h3>Reliability</h3><p>Unit tests, soak tests that catch memory leaks, and CI on every change.</p></article>
+        </div>
+
+        <div class="stack" aria-label="Tools">
+          <ul class="chips big">
+            <li>Python</li><li>Java</li><li>TypeScript</li><li>JavaScript</li><li>PowerShell</li><li>SQL</li>
+            <li>discord.py</li><li>JDA</li><li>Lavalink</li><li>asyncio</li><li>Pytest</li><li>Ruff</li>
+            <li>Docker</li><li>GitHub Actions</li><li>Git</li><li>FFmpeg</li><li>yt-dlp</li><li>SQLite</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="channel" aria-labelledby="channel-h">
+      <div class="wrap">
+        <div class="channel-card">
+          <div>
+            <h2 id="channel-h">AvarathyGaming</h2>
+            <p class="channel-lead">My YouTube channel. Minecraft, new games, old games, weird games, and pushing a game further than I probably should.</p>
+            <p>A lot of it is Malayalam Minecraft horror: playing mid-scary mods and telling the scary story as it happens.</p>
+            <a class="btn btn-primary" href="https://www.youtube.com/@AvarathyGaming">Watch on YouTube</a>
+          </div>
+          <div class="channel-art" aria-hidden="true"><span>AG</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="about" aria-labelledby="about-h">
+      <div class="wrap about">
+        <h2 id="about-h">About me</h2>
+        <div>
+          <p>I'm a developer from India who likes building things, experimenting and trying ideas that sound a bit silly. My GitHub bio calls me a simple guy making AI my slave.</p>
+          <p>Most of my work is backend: music bots, automation and media tools. When I'm not coding, I'm recording games for my channel.</p>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="contact" id="contact">
+  <footer class="site-footer">
     <div class="wrap">
-      <h2>Say hi</h2>
-      <ul>
-        <li><a href="https://github.com/Sharon-ctl">GitHub: Sharon-ctl</a></li>
-        <li><a href="https://www.youtube.com/@AvarathyGaming">YouTube: @AvarathyGaming</a></li>
-        <li><a href="https://instagram.com/sharon__y_">Instagram: sharon__y_</a></li>
-        <li><a href="https://discord.com/invite/KUAVNSJtu5">Discord server</a></li>
-        <li><a href="https://melora-info.vercel.app/">Melora website</a></li>
+      <h2>Let's talk</h2>
+      <p>Find me on Discord, Instagram, GitHub or YouTube.</p>
+      <ul class="links">
+        <li><a class="btn btn-ghost" href="https://discord.com/invite/KUAVNSJtu5">Discord</a></li>
+        <li><a class="btn btn-ghost" href="https://instagram.com/sharon__y_">Instagram</a></li>
+        <li><a class="btn btn-ghost" href="https://github.com/Sharon-ctl">GitHub</a></li>
+        <li><a class="btn btn-ghost" href="https://www.youtube.com/@AvarathyGaming">YouTube</a></li>
       </ul>
-      <p class="small">Based in India.</p>
+      <p class="small">© 2026 Sharon. Built by hand, hosted on GitHub Pages.</p>
     </div>
   </footer>
 
