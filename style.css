@@ -2,10 +2,10 @@
   /* Color Palette: Pure Monochromatic Obsidian, Titanium & Silver */
   --bg: #09090b;
   --bg-elevated: #111115;
-  --card: rgba(18, 18, 24, 0.7);
-  --card-hover: rgba(28, 28, 36, 0.82);
-  --panel: rgba(16, 16, 22, 0.75);
-  --panel-hover: rgba(24, 24, 32, 0.85);
+  --card: rgba(18, 18, 24, 0.94);
+  --card-hover: rgba(28, 28, 36, 0.96);
+  --panel: rgba(16, 16, 22, 0.94);
+  --panel-hover: rgba(24, 24, 32, 0.96);
   
   /* Text */
   --ink: #ffffff;
@@ -25,8 +25,6 @@
   --accent-glow: rgba(255, 255, 255, 0.25);
   
   /* Liquid Glass macOS Tokens */
-  --glass-blur: blur(24px) saturate(190%);
-  --glass-blur-deep: blur(32px) saturate(200%);
   --glass-specular: inset 0 1px 0 0 rgba(255, 255, 255, 0.14), inset 0 0 0 1px rgba(255, 255, 255, 0.02);
   --glass-specular-hover: inset 0 1px 0 0 rgba(255, 255, 255, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
   --glass-shadow: 0 14px 34px -10px rgba(0, 0, 0, 0.65);
@@ -41,8 +39,8 @@
   --tag-bg: rgba(255, 255, 255, 0.04);
   --tag-bg-hover: rgba(255, 255, 255, 0.08);
   --icon-bg: rgba(255, 255, 255, 0.05);
-  --bar-bg: rgba(10, 10, 14, 0.72);
-  --dock-bg: rgba(16, 16, 22, 0.74);
+  --bar-bg: rgba(10, 10, 14, 0.94);
+  --dock-bg: rgba(16, 16, 22, 0.95);
   --shadow: rgba(0, 0, 0, 0.7);
 
   color-scheme: dark;
@@ -69,7 +67,6 @@ body {
     radial-gradient(circle 800px at 90% 35%, rgba(255, 255, 255, 0.03), transparent 60%),
     radial-gradient(circle 750px at 10% 65%, rgba(255, 255, 255, 0.025), transparent 60%),
     radial-gradient(circle 800px at 60% 95%, rgba(255, 255, 255, 0.03), transparent 70%);
-  background-attachment: fixed;
   color: var(--text);
   font-family: var(--font);
   font-size: 1.0625rem;
@@ -132,8 +129,6 @@ h3 {
   border: 1px solid var(--line);
   border-radius: var(--r);
   background: var(--card);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
   box-shadow: var(--glass-specular), var(--glass-shadow);
   padding: 1.65rem;
   transition: transform .26s var(--spring),
@@ -204,8 +199,6 @@ h3 {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: #f4f4f6;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 .btn-outline:hover {
@@ -233,8 +226,6 @@ h3 {
   font-size: .85rem;
   color: var(--muted);
   background: var(--tag-bg);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
   cursor: default;
   transition: transform .22s var(--spring),
@@ -263,8 +254,6 @@ h3 {
   z-index: 60;
   height: var(--bar-h);
   background: var(--bar-bg);
-  backdrop-filter: var(--glass-blur-deep);
-  -webkit-backdrop-filter: var(--glass-blur-deep);
   border-bottom: 1px solid var(--line);
   box-shadow: inset 0 -1px 0 0 rgba(255, 255, 255, 0.03), 0 8px 24px -4px rgba(0, 0, 0, 0.5);
 }
@@ -354,8 +343,6 @@ h3 {
   background: rgba(255, 255, 255, 0.04);
   font-size: .85rem;
   color: #d4d4d8;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
   cursor: default;
   transition: transform .24s var(--spring), border-color .15s ease;
@@ -373,8 +360,8 @@ h3 {
   animation: pulse-glow 2.5s infinite ease-in-out;
 }
 @keyframes pulse-glow {
-  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 8px rgba(255, 255, 255, 0.9); }
-  50% { opacity: .45; transform: scale(.85); box-shadow: 0 0 3px rgba(255, 255, 255, 0.4); }
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .45; transform: scale(.85); }
 }
 
 .clock {
@@ -397,10 +384,11 @@ h3 {
   left: 0;
   bottom: -1px;
   height: 2px;
-  width: var(--p, 0%);
+  width: 100%;
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), #ffffff);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-  transition: width .05s ease-out;
+  transform: scaleX(var(--p, 0));
+  transform-origin: 0 50%;
+  will-change: transform;
 }
 
 /* Hero Section (macOS Bento Grid) */
@@ -591,8 +579,6 @@ h3 {
   text-decoration: none;
   color: #e4e4e7;
   background: var(--tag-bg);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
   transition: transform .22s var(--spring),
               background .16s ease,
@@ -783,8 +769,6 @@ h3 {
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: var(--r);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
   box-shadow: var(--glass-specular), var(--glass-shadow);
   padding: 1.4rem 1.75rem;
   transition: transform .25s var(--spring),
@@ -931,8 +915,6 @@ h3 {
   font-size: .9rem;
   color: #d1d5db;
   background: var(--tag-bg);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
   cursor: default;
   transition: transform .22s var(--spring), background .15s ease, color .15s ease;
@@ -1020,8 +1002,6 @@ h3 {
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 20px;
   background: var(--dock-bg);
-  backdrop-filter: var(--glass-blur-deep);
-  -webkit-backdrop-filter: var(--glass-blur-deep);
   box-shadow: 
     inset 0 1px 1px 0 rgba(255, 255, 255, 0.25),
     inset 0 0 0 1px rgba(255, 255, 255, 0.04),
@@ -1117,8 +1097,6 @@ h3 {
   font-size: .82rem;
   font-weight: 500;
   background: rgba(14, 14, 18, 0.9);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15);
@@ -1163,8 +1141,8 @@ h3 {
   .t-profile, .t-now { grid-column: span 12; }
   .t-stat { grid-column: span 12; flex-direction: row; align-items: baseline; gap: 1rem; }
   .projects, .grid4, .contact { grid-template-columns: 1fr; }
-  .dock a { width: 2.6rem; height: 2.6rem; }
-  .dock { gap: .25rem; padding: .4rem .45rem; bottom: .75rem; }
+  .dock a { width: 2.3rem; height: 2.3rem; border-radius: 11px; }
+  .dock { gap: .2rem; padding: .35rem .4rem; bottom: .75rem; }
   .p-foot { flex-direction: column; align-items: flex-start; gap: .35rem; }
 }
 
@@ -1177,4 +1155,24 @@ h3 {
     transform: none !important;
   }
   .card:hover, .btn:hover, .all-repos:hover { transform: none !important; }
+}
+
+/* Light frosted look only where it is cheap: big screens with a mouse, and only on the two small fixed bars. */
+@media (hover: hover) and (pointer: fine) and (min-width: 1001px) {
+  .topbar, .dock {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+}
+
+/* Touch devices: no sticky hover lift/scale, lighter shadows, no entrance animation. */
+@media (hover: none), (max-width: 640px) {
+  .card:hover, .btn:hover, .all-repos:hover, .link-tile:hover, .tags li:hover,
+  .profile-links a:hover, .facts.inline li:hover, .avatar:hover, .brand:hover,
+  .status:hover, .clock:hover, .bar-nav a:hover, .mac-dot:hover {
+    transform: none;
+  }
+  .tile, .card, .all-repos { box-shadow: var(--glass-specular); }
+  .bento > .tile { animation: none; }
+  .dock { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.5); }
 }

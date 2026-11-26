@@ -5,22 +5,29 @@ var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matche
 (function () {
   var clocks = [document.getElementById("clock"), document.getElementById("clock2")];
   var bar = document.getElementById("progress");
+  var fmt = null;
+  try {
+    fmt = new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Asia/Kolkata" });
+  } catch (e) { clocks.forEach(function (c) { if (c) c.hidden = true; }); }
   function tick() {
-    var now = new Date();
-    try {
-      var t = new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Asia/Kolkata" }).format(now);
-      if (clocks[0]) clocks[0].textContent = t + " IST";
-      if (clocks[1]) clocks[1].textContent = t + " IST, India time";
-    } catch (e) { clocks.forEach(function (c) { if (c) c.hidden = true; }); }
+    if (!fmt) return;
+    var t = fmt.format(new Date());
+    if (clocks[0]) clocks[0].textContent = t + " IST";
+    if (clocks[1]) clocks[1].textContent = t + " IST, India time";
   }
-  function progress() {
-    var max = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.setProperty("--p", (max > 0 ? (window.scrollY / max) * 100 : 0) + "%");
+  // Scroll progress: layout is measured only on load/resize, and the bar is updated at most once per frame.
+  var max = 0, ticking = false;
+  function measure() { max = document.documentElement.scrollHeight - window.innerHeight; update(); }
+  function update() {
+    ticking = false;
+    if (bar) bar.style.setProperty("--p", max > 0 ? Math.min(1, window.scrollY / max).toFixed(4) : 0);
   }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
   tick(); setInterval(tick, 20000);
-  progress();
-  window.addEventListener("scroll", progress, { passive: true });
-  window.addEventListener("resize", progress);
+  measure();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", measure);
+  window.addEventListener("load", measure);
 })();
 
 // Dock: magnify icons near the pointer, and mark the section in view.
@@ -30,11 +37,18 @@ var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matche
   var items = Array.prototype.slice.call(dock.querySelectorAll("a"));
 
   if (finePointer && !reduced) {
+    var lastX = 0, queued = false;
     dock.addEventListener("pointermove", function (e) {
-      items.forEach(function (a) {
-        var r = a.getBoundingClientRect();
-        var d = Math.abs(e.clientX - (r.left + r.width / 2));
-        a.style.setProperty("--s", (1 + 0.45 * Math.max(0, 1 - d / 120)).toFixed(3));
+      lastX = e.clientX;
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () {
+        queued = false;
+        var centers = items.map(function (a) { var r = a.getBoundingClientRect(); return r.left + r.width / 2; });
+        items.forEach(function (a, i) {
+          var d = Math.abs(lastX - centers[i]);
+          a.style.setProperty("--s", (1 + 0.45 * Math.max(0, 1 - d / 120)).toFixed(3));
+        });
       });
     });
     dock.addEventListener("pointerleave", function () {
